@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
    fetchAllDogs()
+   renderDogList()
+   renderPupCard()
 })
 
 function fetchAllDogs(dog) {
@@ -15,47 +17,36 @@ function fetchAllDogs(dog) {
 function renderDogList(dog) {
     let dogNameDiv = document.querySelector("#dog-bar")
     let pupCardDiv = document.querySelector("#dog-info");
-    // console.log(dogNameDiv)
     dog.forEach((dog) => {
         let spanName = document.createElement('span')
-        // console.log(spanName)
         spanName.textContent = dog.name
 
         dogNameDiv.append(spanName)
     
         spanName.addEventListener('click', (e) => {
             e.preventDefault
-            // renderPupCard(dog)
-            // pupCardDiv.interHTML ="" didnt work neither did remove child
+            pupCardDiv.innerHTML = ""
+            renderPupCard(dog)          
+        })
+    })
+}
+function renderPupCard(dog) {
+    let pupCardDiv = document.querySelector("#dog-info");
+        dog.forEach((dog) => {
             let h2Name = document.createElement('h2');
             let imgPup = document.createElement('img')
             let buttonPup = document.createElement('button')
             h2Name.textContent = dog.name
             imgPup.src = dog.image
-            buttonPup.textContent = dog.isGoodDog ? "Good Dog!" : "Bad Dog!"
-            pupCardDiv.append(h2Name, imgPup, buttonPup) 
-        })
-    })
+            buttonPup.textContent = dog.isGoodDog ? "Good Dog!" : "Bad Dog!"    
+            pupCardDiv.append(h2Name, imgPup, buttonPup)  
+    })   
 }
-
-
-
-// function renderPupCard(dog) {
-//     let pupCardDiv = document.querySelector("#dog-info");
-//     dog.forEach((dog) => {
-//         let h2Name = document.createElement('h2');
-//         let imgPup = document.createElement('img')
-//         let buttonPup = document.createElement('button')
-//         h2Name.textContent = dog.name
-//         imgPup.src = dog.image
-//         // buttonPup = {
-//         //     if (isGoodDog === true) {
-//         //         return "Good Dog!"
-//         //     } else if(isGoodDog === false) {
-//         //         return "Bad Dog!"
-//         //     }
-//         //     or isGoodDog ? "Good Dog!" : "Bad Dog!"
-//         // }
-//     })
-//     pupCardDiv.append(h2Name, imgPup) //buttonPup
-// }
+// pupCardDiv.interHTML ="" 
+            // let h2Name = document.createElement('h2');
+            // let imgPup = document.createElement('img')
+            // let buttonPup = document.createElement('button')
+            // h2Name.textContent = dog.name
+            // imgPup.src = dog.image
+            // buttonPup.textContent = dog.isGoodDog ? "Good Dog!" : "Bad Dog!"
+            // pupCardDiv.append(h2Name, imgPup, buttonPup) 
