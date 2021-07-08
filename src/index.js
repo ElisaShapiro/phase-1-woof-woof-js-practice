@@ -5,11 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function fetchAllDogs(dog) {
     fetch(`http://localhost:3000/pups`)
     .then(response => response.json())
-    .then(json => {
-        json.forEach((dog => {
-            renderDogList(json)
-        }))
-    })
+    .then(json => renderDogList(json))
 }
 
 function renderDogList(dog) {
